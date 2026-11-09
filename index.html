@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kotak Saran Kabupaten Kupang</title>
+
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#075985">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f1f5f9;
+            color: #1e293b;
+            min-height: 100vh;
+            padding: 30px 15px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .header {
+            background: #075985;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+            border-radius: 14px 14px 0 0;
+        }
+
+        .header .logo {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .header h1 {
+            font-size: 23px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .form-box {
+            background: white;
+            padding: 30px;
+            border-radius: 0 0 14px 14px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            font-size: 21px;
+            margin-bottom: 12px;
+            color: #075985;
+        }
+
+        .deskripsi {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 19px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #0284c7;
+        }
+
+        textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .radio-group input {
+            width: auto;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #0369a1;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #075985;
+        }
+
+        button:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+        }
+
+        .pesan {
+            display: none;
+            padding: 13px;
+            border-radius: 7px;
+            margin: 15px 0;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .login-pegawai {
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px solid #cbd5e1;
+        }
+
+        .daftar-item {
+            border: 1px solid #cbd5e1;
+            border-radius: 9px;
+            padding: 17px;
+            margin-top: 15px;
+            background: #f8fafc;
+        }
+
+        .daftar-item h3 {
+            color: #075985;
+            margin-bottom: 10px;
+            font-size: 17px;
+            overflow-wrap: anywhere;
+        }
+
+        .daftar-item p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 7px;
+            overflow-wrap: anywhere;
+        }
+
+        .garis {
+            border-top: 1px solid #cbd5e1;
+            margin: 25px 0;
+        }
+
+        .footer {
+            text-align: center;
+            color: #64748b;
+            font-size: 12px;
+            margin-top: 25px;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 480px) {
+            .form-box {
+                padding: 22px 17px;
+            }
+
+            .header h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div class="logo">📩</div>
+        <h1>KOTAK SARAN</h1>
+        <p>KABUPATEN KUPANG</p>
+        <p>
+            Sampaikan aspirasi, kritik, dan saran Anda
+            untuk pelayanan yang lebih baik.
+        </p>
+    </div>
+
+    <div class="form-box">
+
+        <!-- FORMULIR PUBLIK -->
+        <section id="bagianFormSaran">
+
+            <h2>Formulir Kotak Saran</h2>
+
+            <p class="deskripsi">
+                Silakan isi formulir berikut dengan baik dan benar.
+                Setiap saran akan diterima untuk menjadi bahan evaluasi.
+            </p>
+
+            <form id="formSaran">
+
+                <div class="form-group">
+                    <label>Identitas Pengirim</label>
+
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="identitas"
+                            value="anonim" checked>
+                            Anonim
+                        </label>
+
+                        <label>
+                            <input type="radio" name="identitas"
+                            value="nama">
+                            Menggunakan Nama
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" id="kolomNama"
+                style="display:none;">
+
+                    <label for="nama">Nama Lengkap</label>
+
+                    <input type="text" id="nama"
+                    placeholder="Masukkan nama Anda">
+                </div>
+
+                <div class="form-group">
+                    <label for="kategori">Kategori Saran</label>
+
+                    <select id="kategori" required>
+                        <option value="">-- Pilih Kategori --</option>
+                        <option value="Kritik">Kritik</option>
+                        <option value="Saran">Saran</option>
+                        <option value="Aspirasi">Aspirasi</option>
+                        <option value="Pengaduan">Pengaduan</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="bagian">Bagian yang Dituju</label>
+
+                    <select id="bagian" required>
+                        <option value="">-- Pilih Bagian --</option>
+                        <option value="Umum">Umum</option>
+                        <option value="Pelayanan">Pelayanan</option>
+                        <option value="Administrasi">Administrasi</option>
+                        <option value="Kepegawaian">Kepegawaian</option>
+                        <option value="Lainnya">Lainnya</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="judul">Judul Saran</label>
+
+                    <input type="text" id="judul"
+                    placeholder="Masukkan judul saran"
+                    maxlength="150" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="isi">Isi Saran</label>
+
+                    <textarea id="isi"
+                    placeholder="Tuliskan kritik, saran, atau aspirasi Anda..."
+                    maxlength="3000" required></textarea>
+                </div>
+
+                <div id="statusPesan" class="pesan"
+                role="status"></div>
+
+                <button type="submit" id="tombolKirim">
+                    KIRIM SARAN
+                </button>
+
+            </form>
+
+        </section>
+
+        <!-- LOGIN PEGAWAI -->
+        <section class="login-pegawai" id="bagianLogin">
+
+            <h2>Login Pegawai</h2>
+
+            <p class="deskripsi">
+                Pegawai dapat masuk untuk melihat seluruh
+                saran yang telah dikirim.
+            </p>
+
+            <form id="formLogin">
+
+                <div class="form-group">
+                    <label for="emailPegawai">Email Pegawai</label>
+
+                    <input type="email"
+                    id="emailPegawai"
+                    placeholder="Masukkan email pegawai"
+                    required>
+                </div>
+
+                <div class="form-group">
+                    <label for="passwordPegawai">Password</label>
+
+                    <input type="password"
+                    id="passwordPegawai"
+                    placeholder="Masukkan password"
+                    required>
+                </div>
+
+                <button type="submit" id="tombolLogin">
+                    LOGIN PEGAWAI
+                </button>
+
+                <div id="pesanLogin" class="pesan"
+                role="status"></div>
+
+            </form>
+
+        </section>
+
+        <!-- HALAMAN DAFTAR SARAN -->
+        <section id="halamanSaran" style="display:none;">
+
+            <h2>Daftar Saran Masuk</h2>
+
+            <p id="namaPegawaiLogin"
+            style="margin:12px 0;"></p>
+
+            <button type="button" id="tombolKeluar">
+                LOGOUT
+            </button>
+
+            <div id="pesanDaftar" class="pesan"></div>
+
+            <div class="garis"></div>
+
+            <div id="daftarSaran">
+                Memuat data saran...
+            </div>
+
+        </section>
+
+        <div class="footer">
+            KOTAK SARAN KABUPATEN KUPANG<br>
+            Terima kasih atas partisipasi Anda.
+        </div>
+
+    </div>
+
+</div>
+
+<script type="module">
+
+// IMPORT FIREBASE
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp,
+    getDocs,
+    query,
+    orderBy,
+    doc,
+    getDoc
+}
+from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
+
+import {
+    getAuth,
+    signInWithEmailAndPassword,
+    signOut
+}
+from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
+
+
+// KONFIGURASI FIREBASE
+const firebaseConfig = {
+    apiKey: "AIzaSyAXEg2XdkmiUJIcEa7f2lcfAvJ9ZbREaf",
+    authDomain: "kotak-saran-kupang.firebaseapp.com",
+    projectId: "kotak-saran-kupang",
+    storageBucket: "kotak-saran-kupang.firebasestorage.app",
+    messagingSenderId: "197628364148",
+    appId: "1:197628364148:web:a8f2b1e7357a1d2c3b1821",
+    measurementId: "G-2ZFW5ZMQ0N"
+};
+
+
+// HUBUNGKAN FIREBASE
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+
+// AMBIL ELEMEN HTML
+const formSaran = document.getElementById("formSaran");
+const tombolKirim = document.getElementById("tombolKirim");
+const statusPesan = document.getElementById("statusPesan");
+const kolomNama = document.getElementById("kolomNama");
+const inputNama = document.getElementById("nama");
+
+const formLogin = document.getElementById("formLogin");
+const tombolLogin = document.getElementById("tombolLogin");
+const pesanLogin = document.getElementById("pesanLogin");
+
+const bagianLogin = document.getElementById("bagianLogin");
+const halamanSaran = document.getElementById("halamanSaran");
+const namaPegawaiLogin = document.getElementById("namaPegawaiLogin");
+const daftarSaran = document.getElementById("daftarSaran");
+const pesanDaftar = document.getElementById("pesanDaftar");
+const tombolKeluar = document.getElementById("tombolKeluar");
+
+
+// FUNGSI MENAMPILKAN PESAN
+function tampilkanPesan(elemen, pesan, berhasil = false) {
+    elemen.style.display = "block";
+    elemen.style.background = berhasil ? "#dcfce7" : "#fee2e2";
+    elemen.style.color = berhasil ? "#166534" : "#991b1b";
+    elemen.textContent = pesan;
+}
+
+
+// PILIHAN IDENTITAS
+document.querySelectorAll('input[name="identitas"]')
+.forEach(radio => {
+
+    radio.addEventListener("change", () => {
+
+        const menggunakanNama =
+            document.querySelector(
+                'input[name="identitas"]:checked'
+            ).value === "nama";
+
+        kolomNama.style.display =
+            menggunakanNama ? "block" : "none";
+
+        inputNama.required = menggunakanNama;
+    });
+
+});
+
+
+// KIRIM SARAN KE FIRESTORE
+formSaran.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const identitas =
+        document.querySelector(
+            'input[name="identitas"]:checked'
+        ).value;
+
+    const anonim = identitas === "anonim";
+
+    const nama = anonim ? "Anonim" : inputNama.value.trim();
+
+    const kategori =
+        document.getElementById("kategori").value;
+
+    const bagian =
+        document.getElementById("bagian").value;
+
+    const judul =
+        document.getElementById("judul").value.trim();
+
+    const isi =
+        document.getElementById("isi").value.trim();
+
+    if (!anonim && !nama) {
+        alert("Silakan masukkan nama Anda.");
+        return;
+    }
+
+    tombolKirim.disabled = true;
+    tombolKirim.textContent = "MENGIRIM...";
+
+    statusPesan.style.display = "none";
+
+    try {
+
+        await addDoc(collection(db, "saran"), {
+            nama: nama,
+            anonim: anonim,
+            kategori: kategori,
+            bagian: bagian,
+            judul: judul,
+            pesan: isi,
+            status: "Baru",
+            createdAt: serverTimestamp()
+        });
+
+        tampilkanPesan(
+            statusPesan,
+            "Terima kasih! Saran Anda berhasil dikirim.",
+            true
+        );
+
+        formSaran.reset();
+
+        kolomNama.style.display = "none";
+        inputNama.required = false;
+
+    } catch (error) {
+
+        console.error("Kesalahan Firebase:", error);
+
+        tampilkanPesan(
+            statusPesan,
+            "Gagal mengirim saran: " + error.message
+        );
+
+    } finally {
+
+        tombolKirim.disabled = false;
+        tombolKirim.textContent = "KIRIM SARAN";
+
+    }
+
+});
+
+
+// LOGIN PEGAWAI
+formLogin.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    tombolLogin.disabled = true;
+    tombolLogin.textContent = "MEMERIKSA AKUN...";
+
+    pesanLogin.style.display = "none";
+
+    const email =
+        document.getElementById("emailPegawai").value.trim();
+
+    const password =
+        document.getElementById("passwordPegawai").value;
+
+    try {
+
+        // MASUK MENGGUNAKAN FIREBASE AUTHENTICATION
+        const hasilLogin = await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
+
+        const user = hasilLogin.user;
+
+        // PERIKSA DATA PEGAWAI BERDASARKAN UID
+        const dokumenPegawai = await getDoc(
+            doc(db, "pegawai", user.uid)
+        );
+
+        if (
+            !dokumenPegawai.exists() ||
+            dokumenPegawai.data().aktif !== true
+        ) {
+
+            await signOut(auth);
+
+            throw new Error(
+                "Akun ini belum terdaftar sebagai pegawai aktif."
+            );
+        }
+
+        const dataPegawai = dokumenPegawai.data();
+
+        // TAMPILKAN HALAMAN DAFTAR SARAN
+        bagianLogin.style.display = "none";
+        halamanSaran.style.display = "block";
+
+        namaPegawaiLogin.textContent =
+            "Selamat datang, " +
+            (dataPegawai.nama || user.email);
+
+        // AMBIL DATA SARAN
+        await muatDaftarSaran();
+
+    } catch (error) {
+
+        console.error("Kesalahan Login:", error);
+
+        tampilkanPesan(
+            pesanLogin,
+            "Login gagal: " + error.message
+        );
+
+    } finally {
+
+        tombolLogin.disabled = false;
+        tombolLogin.textContent = "LOGIN PEGAWAI";
+
+    }
+
+});
+
+
+// MEMUAT DAFTAR SARAN
+async function muatDaftarSaran() {
+
+    daftarSaran.textContent = "Memuat data saran...";
+    pesanDaftar.style.display = "none";
+
+    try {
+
+        const kumpulanSaran = query(
+            collection(db, "saran"),
+            orderBy("createdAt", "desc")
+        );
+
+        const hasil = await getDocs(kumpulanSaran);
+
+        daftarSaran.replaceChildren();
+
+        if (hasil.empty) {
+
+            daftarSaran.textContent =
+                "Belum ada saran yang masuk.";
+
+            return;
+        }
+
+        hasil.forEach((dokumen) => {
+
+            const data = dokumen.data();
+
+            const kartu = document.createElement("div");
+            kartu.className = "daftar-item";
+
+            const judul = document.createElement("h3");
+            judul.textContent = data.judul || "Tanpa Judul";
+
+            const pengirim = document.createElement("p");
+            pengirim.textContent =
+                "Pengirim: " +
+                (data.anonim === true
+                    ? "Anonim"
+                    : (data.nama || "Tidak dicantumkan"));
+
+            const kategori = document.createElement("p");
+            kategori.textContent =
+                "Kategori: " + (data.kategori || "-");
+
+            const bagian = document.createElement("p");
+            bagian.textContent =
+                "Bagian: " + (data.bagian || "-");
+
+            const isi = document.createElement("p");
+            isi.textContent =
+                "Isi Saran: " + (data.pesan || "-");
+
+            const status = document.createElement("p");
+            status.textContent =
+                "Status: " + (data.status || "Baru");
+
+            const waktu = document.createElement("p");
+
+            let tanggal = "Belum tersedia";
+
+            if (data.createdAt) {
+                tanggal = data.createdAt.toDate().toLocaleString(
+                    "id-ID",
+                    { dateStyle: "medium", timeStyle: "short" }
+                );
+            }
+
+            waktu.textContent = "Waktu: " + tanggal;
+
+            kartu.append(
+                judul,
+                pengirim,
+                kategori,
+                bagian,
+                isi,
+                status,
+                waktu
+            );
+
+            daftarSaran.appendChild(kartu);
+
+        });
+
+    } catch (error) {
+
+        console.error("Kesalahan membaca saran:", error);
+
+        daftarSaran.textContent =
+            "Gagal memuat data saran. Periksa aturan Firestore dan status akun pegawai.";
+
+    }
+
+}
+
+
+// LOGOUT PEGAWAI
+tombolKeluar.addEventListener("click", async () => {
+
+    try {
+
+        await signOut(auth);
+
+        halamanSaran.style.display = "none";
+        bagianLogin.style.display = "block";
+
+        formLogin.reset();
+
+        tampilkanPesan(
+            pesanLogin,
+            "Anda berhasil keluar.",
+            true
+        );
+
+        daftarSaran.replaceChildren();
+
+    } catch (error) {
+
+        console.error("Kesalahan Logout:", error);
+
+        alert("Gagal logout: " + error.message);
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
