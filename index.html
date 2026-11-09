@@ -754,6 +754,17 @@ tombolKeluar.addEventListener("click", async () => {
     }
 
 });
+// PENDAFTARAN SERVICE WORKER
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", async () => {
+        try {
+            await navigator.serviceWorker.register("./sw.js");
+            console.log("Aplikasi siap dipasang.");
+        } catch (error) {
+            console.error("Pendaftaran service worker gagal:", error);
+        }
+    });
+}
 
 </script>
 
