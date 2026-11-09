@@ -1,8 +1,8 @@
 {
   "id": "./index.html",
-  "name": "Kotak Saran Kab. Kupang",
+  "name": "Kotak Saran Kantor Kearsipan dan Perpustakaan",
   "short_name": "Kotak Saran",
-  "description": "Kotak Saran Kabupaten Kupang",
+  "description": "Kotak Saran Kantor Kearsipan dan Perpustakaan",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
@@ -11,13 +11,13 @@
   "theme_color": "#075985",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/2811/2811806.png",
+      "src": "./icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/2811/2811806.png",
+      "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
